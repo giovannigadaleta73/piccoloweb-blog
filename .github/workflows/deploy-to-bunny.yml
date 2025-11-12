@@ -31,3 +31,16 @@ jobs:
         done
         
         echo "✅ Deploy su Bunny completato!"
+    - name: Purge Bunny CDN Cache
+      env:
+        BUNNY_ACCOUNT_API_KEY: ${{ secrets.BUNNY_ACCOUNT_API_KEY }}
+        PULL_ZONE_ID: ${{ secrets.PULL_ZONE_ID }}
+      run: |
+        echo "🔄 Purga cache CDN..."
+        
+        curl -X POST \
+          -H "AccessKey: $BUNNY_ACCOUNT_API_KEY" \
+          -H "Content-Type: application/json" \
+          "https://api.bunny.net/pullzone/$PULL_ZONE_ID/purgeCache"
+        
+        echo "✨ Cache purgata!"
