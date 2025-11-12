@@ -1,0 +1,33 @@
+name: Deploy to Bunny
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Upload to Bunny Storage
+      env:
+        BUNNY_API_KEY: ${{ secrets.BUNNY_API_KEY }}
+        STORAGE_ZONE: ${{ secrets.STORAGE_ZONE }}
+      run: |
+        # Upload index.json
+        curl -X PUT \
+          -H "AccessKey: $BUNNY_API_KEY" \
+          --data-binary @index.json \
+          "https://storage.bunnycdn.com/$STORAGE_ZONE/piccoloweb-blog/index.json"
+        
+        # Upload tutti i file posts
+        find posts -type f | while read file; do
+          curl -X PUT \
+            -H "AccessKey: $BUNNY_API_KEY" \
+            --data-binary @"$file" \
+            "https://storage.bunnycdn.com/$STORAGE_ZONE/piccoloweb-blog/$file"
+        done
+        
+        echo "✅ Deploy su Bunny completato!"
