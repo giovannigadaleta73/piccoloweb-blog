@@ -1,9 +1,9 @@
 [
-  {
-    "slug": "test-bunny",
-    "title": "Test deploy automatico su Bunny",
-    "date": "2025-11-12",
-    "excerpt": "Questo è un test per verificare che il deploy automatico su Bunny CDN funzioni correttamente.",
-    "folder": "2025-11-12-test-bunny"
-  }
+{
+  "slug": "gestione-segnalazioni-territorio",
+  "title": "Gestione delle segnalazioni sul territorio: come un’app può semplificare il lavoro quotidiano",
+  "date": "2025-11-11",
+  "excerpt": "Un’applicazione pensata per aiutare Polizia Locale e uffici tecnici a gestire in modo ordinato e tracciabile le segnalazioni di anomalie sul territorio.",
+  "folder": "2025-11-11-gestione-segnalazioni-territorio"
+}
 ]

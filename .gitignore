@@ -1,3 +1,4 @@
 echo "# OS files
 .DS_Store
 Thumbs.db" > .gitignore
+istruzioni-per-llm
